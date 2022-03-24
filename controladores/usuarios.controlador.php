@@ -428,7 +428,7 @@ class ControladorUsuarios{
 	/*=============================================
 	OLVIDO DE CONTRASEÑA
 	=============================================*/
-	/*
+	
 	static public function ctrOlvidoPassword(){
 		if (isset($_POST["passEmail"])) {
 			if(preg_match('/^(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6}$/', $_POST["passEmail"])){
@@ -463,7 +463,7 @@ class ControladorUsuarios{
 
 							$mail = new PHPMailer();
 							$mail->IsSMTP();
-							//Luego tenemos que iniciar la validaciÃƒÂ³n por SMTP:
+							//Luego tenemos que iniciar la validacion por SMTP:
 							$mail->BACKEND = 'django.core.mail.backends.smtp.EmailBackend';
 							$mail->Mailer = "smtp";
 							$mail->Host = "in-v3.mailjet.com";
@@ -472,7 +472,7 @@ class ControladorUsuarios{
 							$mail->SMTPSecure = 'SSL';
 							$mail->Username = "6993322c8beb299264745a7d57cccff8";
 							$mail->Password = "727089765056d0820d8d409784984420";		
-							$mail->From = "solarthink2clicksoftware@gmail.com"; 
+							$mail->From = "sistemapos@gmail.com"; 
 							$mail->AddAddress($_POST["passEmail"]); // Esta es la dirección a donde enviamos// A RELLENARDesde donde enviamos (Para mostrar). Puede ser el mismo que el email creado previamente.
 							$mail->FromName = ""; //A RELLENAR Nombre a mostrar del remitente. 
 							$mail->MsgHTML('');
@@ -486,16 +486,16 @@ class ControladorUsuarios{
 
 									<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom:40px">
 										<center>
-											<img style="padding:10px; width:25%" src="http://www.erp.think2click.com/Solar/img/logo-Solar.png">
+											<img style="padding:10px; width:25%" src="#">
 										</center>
 
 										<div style="position:relative; margin:auto; width:600px; background:white; padding:20px">
 											<center>
-												<img style="padding:20px; width:15%" src="http://www.erp.think2click.com/Solar-home/img/icon-pass.png">
+												<img style="padding:20px; width:15%" src="#">
 												<h3 style="font-weight:100; color:#999">SOLICITUD DE NUEVA CONTRASEÑA</h3>
 												<hr style="border:1px solid #ccc; width:80%">
 												<h4 style="font-weight:100; color:#999; padding:0 20px"><strong>Su nueva contraseña:</strong>'.$nuevoPassword.'</h4>
-												<a href="http://www.erp.think2click.com/Solar-home/Solar-dashboard/" target="_blank" style="text-decoration:none">
+												<a href="#" target="_blank" style="text-decoration:none">
 												<div style="line-height:60px; background:#0aa; width:60%; color:white">Ingrese nuevamente al sitio</div>
 												</a>
 												<br>
@@ -565,7 +565,6 @@ class ControladorUsuarios{
 		}
 		
 	}	
-	*/
 
 }
 	
