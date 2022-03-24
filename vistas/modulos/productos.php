@@ -64,19 +64,13 @@ if($_SESSION["perfil"] == "Vendedor"){
         <thead>
          <tr>
            <th style="width:5px">#</th>
-           <th>Imagen</th>
+           <th>Categoria</th>
+           <th>Proveedor</th>
            <th>Código</th>
            <th>Descripción</th>
-           <!--
-           <th>Proveedores</th>
-           <th style="width:100px">Categoría</th>
-           -->
+           <th>Imagen</th>
            <th>Stock</th>
-           <!--
-           <th>Precio de compra</th>
            <th>Precio de venta</th>
-           <th>Agregado</th>
-           -->
            <th>Acciones</th>
          </tr> 
         </thead>
@@ -384,7 +378,7 @@ if($_SESSION["perfil"] == "Vendedor"){
               <br>
               <input type="file" name="file" id="file">
               <br>
-              <a href="Archivos/Excel/excel.producto.php" >Descargar Archivo Plano</a>
+              <a href="Excel/excel.producto.php" >Descargar Archivo Plano</a>
               <br><br>
               <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -628,7 +622,6 @@ if($_SESSION["perfil"] == "Vendedor"){
     </div>
   </div>
 </div>
-
 
 <div id="modalMostrarProducAgotados" class="modal fade" role="dialog">
   <div class="modal-dialog">

@@ -5,6 +5,14 @@
 -- HeidiSQL Versión:             11.2.0.6213
 -- --------------------------------------------------------
 
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
 -- Volcando estructura de base de datos para sistema_pos
 CREATE DATABASE IF NOT EXISTS `sistema_pos` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
 USE `sistema_pos`;
@@ -63,18 +71,19 @@ CREATE TABLE IF NOT EXISTS `preventa` (
   `codigo` int(11) NOT NULL,
   `id_cliente` int(11) NOT NULL,
   `id_vendedor` int(11) NOT NULL,
-  `productos` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `impuesto` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `neto` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `total` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `metodo_pago` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `notas` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
+  `productos` text COLLATE utf8_spanish_ci NOT NULL,
+  `impuesto` float NOT NULL DEFAULT '0',
+  `neto` float NOT NULL DEFAULT '0',
+  `total` float NOT NULL DEFAULT '0',
+  `metodo_pago` text COLLATE utf8_spanish_ci NOT NULL,
+  `notas` text COLLATE utf8_spanish_ci,
+  `fecha` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `cliente_preventa` (`id_cliente`),
   KEY `vendedor_preventa` (`id_vendedor`),
   CONSTRAINT `cliente_preventa` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
   CONSTRAINT `vendedor_preventa` FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- La exportación de datos fue deseleccionada.
 
@@ -82,6 +91,7 @@ CREATE TABLE IF NOT EXISTS `preventa` (
 CREATE TABLE IF NOT EXISTS `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_categoria` int(11) NOT NULL,
+  `id_proveedores` int(11) NOT NULL,
   `codigo` text COLLATE utf8_spanish_ci NOT NULL,
   `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `imagen` text COLLATE utf8_spanish_ci NOT NULL,
@@ -90,7 +100,11 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `precio_venta` float NOT NULL,
   `ventas` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `categoria_producto` (`id_categoria`),
+  KEY `proveedores_producto` (`id_proveedores`),
+  CONSTRAINT `categoria_producto` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`),
+  CONSTRAINT `proveedores_producto` FOREIGN KEY (`id_proveedores`) REFERENCES `proveedores` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- La exportación de datos fue deseleccionada.

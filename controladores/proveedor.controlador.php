@@ -306,5 +306,17 @@ class ControladorProveedor{
 		
 	}
 
+	/*=============================================
+	MOSTRAR UN PROVEEDOR
+	=============================================*/
+
+	static public function ctrMostrarUnProveedor($item, $valor){
+
+		$tabla = "proveedores";
+		$respuesta = ModeloProveedor::mdlMostrarUnProveedor($tabla, $item, $valor);
+		return $respuesta;
+
+	}
+
 }
 

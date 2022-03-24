@@ -13,8 +13,8 @@ CARGAR LA TABLA DINÁMICA DE PRE-VENTA
 
 // })// 
 
-$('.tablaPreventas').DataTable( {
-	"ajax": "ajax/datatable-productos.ajax.php",
+$('.tablaPreventas').DataTable({
+	"ajax": "ajax/datatable-preventa.ajax.php",
 	"deferRender": true,
 	"retrieve": true,
 	"processing": true,
@@ -42,7 +42,6 @@ $('.tablaPreventas').DataTable( {
 			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
 			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
 		}
-
 }
 
 } );
@@ -653,7 +652,7 @@ IMPRIMIR FACTURA
 $(".tablas").on("click", ".btnImprimirFacturaPre", function(){
 
 var codigoPreventa = $(this).attr("codigoPreventa");
-window.open("extensiones/tcpdf/pdf/factura-2.php?codigo="+codigoPreventa, "_blank");
+window.open("extensiones/tcpdf/pdf/cotizacion.php?codigo="+codigoPreventa, "_blank");
 
 })
 

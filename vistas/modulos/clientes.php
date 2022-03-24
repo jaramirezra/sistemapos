@@ -269,7 +269,7 @@
               <br>
               <input type="file" name="file" id="file">
               <br>
-              <a href="Archivos/Excel/excel.clientes.php" >Descargar Archivo Plano</a>
+              <a href="Excel/excel.clientes.php" >Descargar Archivo Plano</a>
               <br><br>
               <div class="alert alert-info alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>

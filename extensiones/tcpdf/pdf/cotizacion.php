@@ -98,7 +98,7 @@ $bloque1 = <<<EOF
 					$email
 				</div>
 			</td>
-            <td style="background-color:white; width:110px; text-align:center; color:red"><br><br>FACTURA N.<br>$valorVenta</td>
+            <td style="background-color:white; width:110px; text-align:center; color:red"><br><br>COTIZACION N.<br>$valorVenta</td>
 		</tr>
 	</table>
 

@@ -170,4 +170,16 @@ class ControladorCategorias{
 		}
 		
 	}
+
+	/*=============================================
+	MOSTRAR UNA CATEGORIAS
+	=============================================*/
+
+	static public function ctrMostrarUnaCategorias($item, $valor){
+
+		$tabla = "categorias";
+		$respuesta = ModeloCategorias::mdlMostrarUnaCategorias($tabla, $item, $valor);
+		return $respuesta;
+	
+	}
 }

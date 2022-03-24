@@ -92,5 +92,17 @@ class ModeloCategorias{
 
 	}
 
+	/*=============================================
+	MOSTRAR UNA CATEGORIAS
+	=============================================*/
+
+	static public function mdlMostrarUnaCategorias($tabla, $item, $valor){
+		$stmt = Conexion::conectar()->prepare("SELECT categoria FROM $tabla WHERE $item = :$item");
+		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+		$stmt -> execute();
+		return $stmt->fetchColumn();
+	}
+
+
 }
 

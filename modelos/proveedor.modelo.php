@@ -159,4 +159,16 @@ class ModeloProveedor{
 
 	}
 
+	/*=============================================
+	MOSTRAR UN PROVEEDOR
+	=============================================*/
+
+	static public function mdlMostrarUnProveedor($tabla, $item, $valor){
+		$stmt = Conexion::conectar()->prepare("SELECT codigo FROM $tabla WHERE $item = :$item");
+		$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+		$stmt -> execute();
+		return $stmt->fetchColumn();
+	}
+
+
 }

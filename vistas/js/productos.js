@@ -15,8 +15,8 @@ CARGAR LA TABLA DINÁMICA DE PRODUCTOS
 
 var perfilOculto = $("#perfilOculto").val();
 
-$('.tablaProductos').DataTable( {
-	"ajax": "ajax/datatable-preventa.ajax.php",
+$('.tablaProductos').DataTable({
+	"ajax": "ajax/datatable-productos.ajax.php",
 	"deferRender": true,
 	"retrieve": true,
 	"processing": true,
@@ -45,10 +45,8 @@ $('.tablaProductos').DataTable( {
 			"sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
 			"sSortDescending": ": Activar para ordenar la columna de manera descendente"
 		}
-
-}
-
-} );
+	}
+});
 
 
 /*=============================================
@@ -281,7 +279,6 @@ $(".tablaProductos tbody").on("click", "button.btnEliminarProducto", function(){
 	})
 
 })
-
 
 /*=============================================
 REVISAR SI EL USUARIO YA ESTÁ REGISTRADO

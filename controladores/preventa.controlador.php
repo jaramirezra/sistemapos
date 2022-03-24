@@ -1,7 +1,7 @@
 <?php
 
-class ControladorPreventa{
-
+class ControladorPreventa
+{
 	/*=============================================
 	MOSTRAR PRE-VENTA
 	=============================================*/
@@ -17,13 +17,10 @@ class ControladorPreventa{
 	=============================================*/
 
 	static public function ctrCrearPreventa(){
-
+		
 		if(isset($_POST["nuevaPreventa"])){
-
-			/*=============================================
-			ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
-			=============================================*/
-
+			
+			
 			if($_POST["listaProductos"] == ""){
 
 					echo'<script>
@@ -36,7 +33,7 @@ class ControladorPreventa{
 					  }).then(function(result){
 								if (result.value) {
 
-								window.location = "preventa";
+								window.location = "ventas";
 
 								}
 							})
@@ -46,32 +43,28 @@ class ControladorPreventa{
 				return;
 			}
 
-
 			$listaProductos = json_decode($_POST["listaProductos"], true);
 			$totalProductosComprados = array();
+
 			foreach ($listaProductos as $key => $value) {
 
-			   array_push($totalProductosComprados, $value["cantidad"]);
-				
-			   $tablaProductos = "productos";
+				array_push($totalProductosComprados, $value["cantidad"]);
+			   	$tablaProductos = "productos";
 
 			    $item = "id";
 			    $valor = $value["id"];
 			    $orden = "id";
 			    $traerProducto = ModeloProductos::mdlMostrarProductos($tablaProductos, $item, $valor, $orden);
-
+				
 				$item1a = "ventas";
 				$valor1a = $value["cantidad"] + $traerProducto["ventas"];
 			    $nuevasVentas = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1a, $valor1a, $valor);
 
-				/*
-				$item1b = "stock";
-				$valor1b = $value["stock"];
-				$nuevoStock = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1b, $valor1b, $valor);
-				*/
-
+				// $item1b = "stock";
+				// $valor1b = $value["stock"];
+				// $nuevoStock = ModeloProductos::mdlActualizarProducto($tablaProductos, $item1b, $valor1b, $valor);
 			}
-
+			
 			$tablaClientes = "clientes";
 
 			$item = "id";
@@ -91,14 +84,7 @@ class ControladorPreventa{
 			$valor1b = $fecha.' '.$hora;
 			$fechaCliente = ModeloClientes::mdlActualizarCliente($tablaClientes, $item1b, $valor1b, $valor);
 
-			if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevosCambios"])
-			){
-			/*=============================================
-			GUARDAR LA COMPRA
-			=============================================*/	
-
 			$tabla = "preventa";
-
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
 						   "id_cliente"=>$_POST["seleccionarCliente"],
 						   "codigo"=>$_POST["nuevaPreventa"],
@@ -107,9 +93,10 @@ class ControladorPreventa{
 						   "neto"=>$_POST["nuevoPrecioNeto"],
 						   "total"=>$_POST["totalVenta"],
 						   "metodo_pago"=>$_POST["listaMetodoPago"],
-						   "notas"=>$_POST["nuevosCambios"]); 
+						   "notas"=>$_POST["nuevosCambios"]
+						  );
 
-			$respuesta = ModeloPreVenta::mdlIngresarPreVenta($tabla, $datos);
+			$respuesta = ModeloPreVenta::mdlIngresarPreventa($tabla, $datos);
 
 			if($respuesta == "ok"){
 
@@ -119,7 +106,7 @@ class ControladorPreventa{
 
 				swal({
 					  type: "success",
-					  title: "La venta ha sido guardada correctamente",
+					  title: "La cotización ha sido guardada correctamente",
 					  showConfirmButton: true,
 					  confirmButtonText: "Cerrar"
 					  }).then(function(result){
@@ -133,10 +120,9 @@ class ControladorPreventa{
 				</script>';
 
 			}
-		}
 
 		}
-
+		
 	}
 
 	/*=============================================
@@ -529,7 +515,6 @@ class ControladorPreventa{
 
 	}
 
-
 	/*=============================================
 	SUMA TOTAL VENTAS
 	=============================================*/
@@ -541,5 +526,4 @@ class ControladorPreventa{
 		return $respuesta;
 
 	}
-
 }
