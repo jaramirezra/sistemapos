@@ -1,5 +1,5 @@
 # Sistema de punto de ventas
-Desarrollado en php 7.1, realizado nativamente con componentes de front con bootstrap 3 y con palntilla de adminlte 2.
+Desarrollado en php 7.1, realizado nativamente con componentes de front con bootstrap 3 y con plantilla de adminlte 2.
 
 ######  caracteristicas
 >- Usuarios
